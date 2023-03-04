@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b65hjj0ndnrnb"]
+
+[ext_resource type="Script" path="res://addons/ez-sfx-and-music/scenes/MusicPlayer/music_player.gd" id="1_hr3gb"]
+[ext_resource type="Script" path="res://addons/ez-sfx-and-music/scenes/AudioStreamPlayerWithFade/audio_stream_player_with_fade.gd" id="2_ykcfq"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_hr3gb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+script = ExtResource("2_ykcfq")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+script = ExtResource("2_ykcfq")

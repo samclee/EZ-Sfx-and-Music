@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwochtdtd4na2"
+path="res://.godot/imported/Grasslands Theme.mp3-81ace43172754c613986336baa0fcb77.mp3str"
+
+[deps]
+
+source_file="res://addons/ez-sfx-and-music/examples/example_music/Grasslands Theme.mp3"
+dest_files=["res://.godot/imported/Grasslands Theme.mp3-81ace43172754c613986336baa0fcb77.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

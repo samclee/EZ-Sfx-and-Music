@@ -2,10 +2,10 @@ extends Node
 class_name SfxPlayer
 
 const audio_stream_player_pool_scn: PackedScene = preload("res://addons/ez-sfx-and-music/scenes/AudioStreamPlayerPool/audio_stream_player_pool.tscn")
-const sound_extensions = [
-	".wav",
-	".mp3",
-	".ogg"
+const SOUND_EXTENSIONS = [
+	"wav",
+	"mp3",
+	"ogg"
 ]
 
 
@@ -22,13 +22,15 @@ func _ready():
 func play(sfx_name: String, linear_vol: float = 1.0) -> void:
 	if not has_node(sfx_name):
 		if debug_output:
-			print("Pool for sounf effect \"%s\" not found" % sfx_name)
+			print("Pool for sound effect \"%s\" not found" % sfx_name)
 		return
 	get_node(sfx_name).play(linear_vol)
 
-
+# Creates one AudioStreamPlayerPool per .import file found for a sound file
 func _load_sfx_in_folder(sfx_folder_path: String) -> void:
 	if not DirAccess.dir_exists_absolute(sfx_folder_path):
+		if debug_output:
+			print("No folder specified, no sfx loaded")
 		return
 	var dir = DirAccess.open(sfx_folder_path)
 	dir.list_dir_begin()
@@ -63,7 +65,4 @@ func _is_import_file(file_name: String) -> bool:
 
 
 func _is_sound_file(file_name: String) -> bool:
-	for ext in sound_extensions:
-		if file_name.ends_with(ext):
-			return true
-	return false
+	return SOUND_EXTENSIONS.has(file_name.get_extension())

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bauwh1npd4u0g"]
+
+[ext_resource type="Script" path="res://addons/ez-sfx-and-music/scenes/AudioStreamPlayerWithFade/audio_stream_player_with_fade.gd" id="1_dgi45"]
+
+[node name="AudioStreamPlayerWithFade" type="AudioStreamPlayer"]
+script = ExtResource("1_dgi45")

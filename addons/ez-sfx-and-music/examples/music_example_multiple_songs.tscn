@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://w8qwtmdyp8sa"]
+
+[ext_resource type="Script" path="res://addons/ez-sfx-and-music/examples/music_example_multiple_songs.gd" id="1_cxf1a"]
+[ext_resource type="PackedScene" uid="uid://b65hjj0ndnrnb" path="res://addons/ez-sfx-and-music/scenes/MusicPlayer/music_player.tscn" id="2_3cun0"]
+
+[node name="MusicExampleMultipleSongs" type="Node"]
+script = ExtResource("1_cxf1a")
+
+[node name="MusicPlayer" parent="." instance=ExtResource("2_3cun0")]
+music_folder = "res://addons/ez-sfx-and-music/examples/example_music"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionButton" type="OptionButton" parent="Control"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 294.0
+offset_right = 554.0
+offset_bottom = 352.0
+theme_override_font_sizes/font_size = 36
+item_count = 3
+selected = 0
+popup/item_0/text = "Grasslands Theme"
+popup/item_0/id = 0
+popup/item_1/text = "Dungeon Theme"
+popup/item_1/id = 1
+popup/item_2/text = "nothing"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 287.0
+offset_right = 934.0
+offset_bottom = 351.0
+theme_override_font_sizes/font_size = 44
+text = "Fade to                                   in          seconds"
+
+[node name="SpinBox" type="SpinBox" parent="Control"]
+layout_mode = 0
+offset_left = 629.0
+offset_top = 291.0
+offset_right = 712.063
+offset_bottom = 352.0
+max_value = 999.0
+step = 0.1
+value = 0.5
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 262.0
+offset_right = 1087.0
+offset_bottom = 367.0
+theme_override_font_sizes/font_size = 56
+text = "GO"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 424.0
+offset_right = 800.0
+offset_bottom = 488.0
+theme_override_font_sizes/font_size = 44
+text = "Transition complete: 100%"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://bie48qtwyjfyp"]
+
+[ext_resource type="Script" path="res://addons/ez-sfx-and-music/examples/music_example_single_song.gd" id="1_yj38s"]
+[ext_resource type="PackedScene" uid="uid://b65hjj0ndnrnb" path="res://addons/ez-sfx-and-music/scenes/MusicPlayer/music_player.tscn" id="2_vl22i"]
+
+[node name="MusicExampleSingleSong" type="Node"]
+script = ExtResource("1_yj38s")
+
+[node name="MusicPlayer" parent="." instance=ExtResource("2_vl22i")]
+music_folder = "res://addons/ez-sfx-and-music/examples/example_music"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 428.0
+offset_right = 540.0
+offset_bottom = 588.0
+theme_override_font_sizes/font_size = 44
+toggle_mode = true
+text = "Fade song in"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 428.0
+offset_right = 1073.0
+offset_bottom = 588.0
+theme_override_font_sizes/font_size = 44
+disabled = true
+toggle_mode = true
+text = "Fade song out"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 40.0
+offset_right = 911.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 44
+text = "This example shows how one song can be faded in and out"
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 227.0
+offset_right = 921.0
+offset_bottom = 355.0
+theme_override_font_sizes/font_size = 44
+text = "Fade duration (seconds):"
+autowrap_mode = 3
+
+[node name="SpinBox" type="SpinBox" parent="Control"]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 221.0
+offset_right = 840.0
+offset_bottom = 303.0
+max_value = 999.0
+step = 0.1
+value = 0.5
+
+[node name="Label3" type="Label" parent="Control"]
+offset_left = 214.0
+offset_top = 327.0
+offset_right = 773.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 44
+text = "Transition complete: 100%"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]
