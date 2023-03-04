@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4mo6b862s8u8"]
+
+[ext_resource type="Script" path="res://addons/ez-sfx-and-music/examples/sfx_example.gd" id="1_6sriy"]
+[ext_resource type="PackedScene" uid="uid://c8ctnt6jyl4ym" path="res://addons/ez-sfx-and-music/scenes/SfxPlayer/sfx_player.tscn" id="1_qn5or"]
+[ext_resource type="Texture2D" uid="uid://db35qh8kvqxjg" path="res://icon.svg" id="3_ju5dm"]
+
+[node name="SfxExample" type="Node"]
+script = ExtResource("1_6sriy")
+
+[node name="SfxPlayer" parent="." instance=ExtResource("1_qn5or")]
+sfx_folder = "res://addons/ez-sfx-and-music/examples/example_sfx"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Linear volume: 1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VSlider" type="VSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_icons/grabber = ExtResource("3_ju5dm")
+theme_override_icons/grabber_highlight = ExtResource("3_ju5dm")
+theme_override_icons/grabber_disabled = ExtResource("3_ju5dm")
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.43
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Try rapidly pressing the buttons!
+The sounds will overlap B)"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Explosion"
+
+[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Depressurizing"
+
+[node name="Button3" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Shutdown"
+
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VSlider" to="." method="_on_v_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer2/Button3" to="." method="_on_button_3_pressed"]

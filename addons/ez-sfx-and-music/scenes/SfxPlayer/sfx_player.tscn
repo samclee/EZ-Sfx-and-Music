@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ctnt6jyl4ym"]
+
+[ext_resource type="Script" path="res://addons/ez-sfx-and-music/scenes/SfxPlayer/sfx_player.gd" id="1_1xni4"]
+
+[node name="SfxPlayer" type="Node"]
+script = ExtResource("1_1xni4")
