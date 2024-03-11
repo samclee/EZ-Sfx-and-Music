@@ -40,6 +40,13 @@ func play(song_name: String, fade_duration: float = default_fade_duration, targe
 	_cur_player_idx = int(not _cur_player_idx)
 
 
+func get_current_song_name(fade_duration: float = default_fade_duration) -> String:
+	var current_player = _get_current_player() as AudioStreamPlayerWithFade
+	if not current_player.playing or current_player.stream.get_length() - current_player.get_playback_position() < fade_duration:
+		return ""
+	return current_player.stream.resource_path.get_file().get_basename()
+
+
 func fade_out(fade_duration: float = default_fade_duration) -> void:
 	var cur_player = get_child(_cur_player_idx) as AudioStreamPlayerWithFade
 	cur_player.fade_out(fade_duration)
@@ -90,3 +97,7 @@ func _get_current_and_next_player() -> Array:
 		get_child(_cur_player_idx),
 		get_child(int(not _cur_player_idx))
 	]
+
+
+func _get_current_player():
+	return get_child(_cur_player_idx)
